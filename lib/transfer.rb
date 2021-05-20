@@ -25,8 +25,8 @@ class Transfer
       # set status to rejected
     # don't repeat transfer, by checking status
     # if @sender.balance > @amount && @status != "complete"
+
     if @sender.balance < @amount 
-      @status="Transaction rejected. Please check your account balance."
     end
     if @status == "pending"
       @sender.withdraw(@amount)
