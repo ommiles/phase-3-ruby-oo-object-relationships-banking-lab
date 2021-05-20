@@ -26,12 +26,13 @@ class Transfer
     # don't repeat transfer, by checking status
     # if @sender.balance > @amount && @status != "complete"
 
-    if @sender.balance < @amount 
-    end
-    if @status == "pending"
+    if valid? && @status == "pending" && @sender.balance > @amount
       @sender.withdraw(@amount)
       @receiver.deposit(@amount)
       @status="complete"
+    else
+      @status="rejected"
+      "Transaction rejected. Please check your account balance."
     end
   end
 end
