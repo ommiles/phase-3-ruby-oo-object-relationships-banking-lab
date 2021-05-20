@@ -17,4 +17,21 @@ class Transfer
       false
     end
   end
+
+  def execute_transaction
+    # balance greater than amount
+      # execute transaction and set status to complete
+    # balance less than amount
+      # set status to rejected
+    # don't repeat transfer, by checking status
+    # if @sender.balance > @amount && @status != "complete"
+    if @sender.balance < @amount 
+      @status="Transaction rejected. Please check your account balance."
+    end
+    if @status == "pending"
+      @sender.withdraw(@amount)
+      @receiver.deposit(@amount)
+      @status="complete"
+    end
+  end
 end
