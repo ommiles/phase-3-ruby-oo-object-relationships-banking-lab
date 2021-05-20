@@ -8,9 +8,7 @@ class BankAccount
     # attr_writer 
 
     def initialize name
-        @name=name
-        @balance=1000
-        @status="open"
+        @name, @balance, @status = name, 1000, "open"
     end
 
     def deposit(amount)
